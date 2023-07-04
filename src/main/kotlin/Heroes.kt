@@ -16,9 +16,6 @@ open class Heroes(
 
         }
     }
-    fun attack(target: Enemy){
-        attackPower
-    }
 
 
 
