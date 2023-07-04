@@ -1,11 +1,12 @@
-var paladin:Paladin = Paladin("Arthas",30,1,2000,100,200)
-var littleDragon:LittleDragon= LittleDragon("Wasp",2000,100)
+var paladin:Paladin = Paladin("Arthas",2500,1,200,200)
+var littleDragon:LittleDragon= LittleDragon("Wasp",200)
 
 
 fun main(){
     println("Start battle between ${paladin.name} and ${littleDragon.name}")
     while (paladin.health > 0 && littleDragon.health > 0) {
         littleDragon.takeDamage(paladin.judgment())
+        paladin.healOfRighteous()
         if (littleDragon.health > 0) {
             paladin.takeDamage(littleDragon.fireBolt())
         }

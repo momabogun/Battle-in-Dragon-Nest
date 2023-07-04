@@ -1,11 +1,11 @@
 open class Heroes(
-    var name: String,
+    val name: String,
     var abilityPower: Int,
     var level: Int,
-    var health: Int,
     var mana: Int,
     var attackPower: Int,
 ){
+    open var health: Int = 1500
 
     fun takeDamage(damage:Int){
         health -= damage
