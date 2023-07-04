@@ -17,7 +17,8 @@ class Paladin(
     fun healOfRighteous(){
         if (mana <= 0){
             println("You have no mana for this Spell!!")
-        } else if (this.health >= this.maxHealth){
+        } else if (this.health == this.maxHealth){
+            this.mana -= 100
             println("You have full HP!!")
 
             }else {
