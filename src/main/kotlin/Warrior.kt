@@ -13,10 +13,10 @@ class Warrior(
 
     override var mana = 0
     fun bladeStorm(target: MutableList<Enemy>){
-        warrior.manaUsage(100)
         if (mana < 100) {
             println("You have no mana for this Spell!!")
         } else {
+            warrior.manaUsage(100)
             println("${this.name} casted Blade Storm!!")
             val bladeStorm = attackPower/2
             for (enemy in target){
@@ -25,20 +25,20 @@ class Warrior(
         }
     }
     fun mortalStrike(target: Enemy){
-        warrior.manaUsage(100)
         if (mana < 100){
             println("You have no mana for this Spell!!")
         } else{
+            warrior.manaUsage(100)
             println("${this.name} casted Mortal Strike!!")
             val mortalStrike = attackPower*2
             target.takeDamage(mortalStrike)
         }
     }
     fun execute(target: Enemy){
-        warrior.manaUsage(200)
-        if (mana < 200){
+        if (mana < 300){
             println("You have no mana for this Spell!!")
         } else {
+            warrior.manaUsage(300)
             println("ULTIMATE.${this.name} casted Execute!!")
             val execute = (0.2 * target.health).toInt()
             println("Execute did $execute DMG")
