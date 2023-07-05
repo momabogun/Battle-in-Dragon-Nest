@@ -5,17 +5,20 @@ open class Heroes(
     var exp :Int,
     var maxMana: Int,
     var attackPower: Int,
+    open var abilityPower: Int
 ){
+
     val maxHealth:Int = maxHP
     private val maxM:Int = maxMana
     var health = maxHealth
         set(value) {
             field = value.coerceIn(0, maxHealth)
         }
-    var mana = maxM
+    open var mana = maxM
         set(value) {
             field = value.coerceIn(0,maxM)
         }
+    
 
     fun takeDamage(damage:Int){
         health -= damage
@@ -52,9 +55,16 @@ open class Heroes(
         }
 
     }
-    fun attack (): Int{
-        mana += 20
-        return attackPower * level
+    fun attack (target: Enemy){
+        mana += 100
+        val attack = attackPower
+        target.takeDamage(attack)
+    }
+    fun manaUsage(cost:Int){
+        mana -= cost
+    }
+    fun heal(heal:Int){
+        health += heal
     }
 
 

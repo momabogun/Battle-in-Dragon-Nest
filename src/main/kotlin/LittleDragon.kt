@@ -2,9 +2,10 @@ class LittleDragon(
     name: String,
     maxHP:Int,
     attackPower: Int): Enemy(name,maxHP,attackPower) {
-    fun fireBolt():Int{
+    fun fireBolt(target: Heroes){
         println("${this.name} casted Fire Bolt!!")
-            return attackPower * (1..2).random()
+        val fireBolt = attackPower * (1..2).random()
+            target.takeDamage(fireBolt)
         }
 
 

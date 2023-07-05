@@ -5,27 +5,50 @@ class Paladin(
     exp :Int,
     maxMana: Int,
     attackPower: Int,
-    ): Heroes(name,maxHP,level,exp,maxMana,attackPower) {
-        private var abilityPower = 100*level
+    abilityPower:Int
 
-    fun judgment(): Int {
-        println("${this.name} casted Judgment!!")
-        return attackPower + ((abilityPower / 2) * level)
+    ): Heroes(name,maxHP,level,exp,maxMana,attackPower, abilityPower) {
+    override fun toString(): String {
+        return "${this.name} ${this.maxHP} ${this.level} ${this.exp} ${this.maxMana} ${this.mana}"
+    }
+
+    fun judgment(target: Enemy,) {
+        println("Paladin mana: ${this.mana}")
+        paladin.manaUsage(100)
+        if (mana < 100) {
+            println("You have no mana for this Spell!!")
+        } else {
+            println("${this.name} casted Judgment!!")
+            val judgment = attackPower + ((abilityPower / 2) * level)
+            target.takeDamage(judgment)
+        }
     }
     fun healOfRighteous(){
-        if (mana <= 0){
+        paladin.manaUsage(abilityPower)
+        if (mana < abilityPower){
             println("You have no mana for this Spell!!")
         } else if (this.health == this.maxHealth){
-            this.mana -= 100
-            println("You have full HP!!")
+            println("You have already full HP!!")
 
             }else {
-                this.mana -= 100
-                val heal = 200
-                this.health += heal
+                paladin.heal(abilityPower)
             println("${this.name} has ${this.health}/${this.maxHealth}")
             }
         }
+    fun wingsOfJustice(){
+        paladin.manaUsage(300)
+        if (mana < 300) {
+            println("You have no mana for this Spell!!")
+        } else{
+            println("ULTIMATE. ${this.name} has now new form Wings of Justice")
+            abilityPower *= 4
+            attackPower *= 2
+            maxHP += 300
+            maxMana += 200
+
+        }
+
+    }
 
 
     }

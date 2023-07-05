@@ -1,23 +1,33 @@
-var paladin:Paladin = Paladin("Arthas",2500,1,0,800,100)
-var littleDragon:LittleDragon= LittleDragon("Wasp",1000,100)
+var paladin:Paladin = Paladin("Altras Lighthammer",2500,1,0,1500,100,100)
+var littleDragon:LittleDragon= LittleDragon("Wasp",10000,200)
+var warrior:Warrior = Warrior("Fabian Wyrm",2300,1,0,500,200)
 
 
 fun main(){
     println("Start battle between ${paladin.name} and ${littleDragon.name}")
-    while (paladin.health > 0 && littleDragon.health > 0) {
-        littleDragon.takeDamage(paladin.judgment())
-        paladin.healOfRighteous()
-        if (littleDragon.health > 0) {
-            paladin.takeDamage(littleDragon.fireBolt())
-        }
-    }
+    println(paladin)
+    paladin.judgment(littleDragon)
+    paladin.judgment(littleDragon)
+    paladin.wingsOfJustice()
+    paladin.judgment(littleDragon)
+    paladin.healOfRighteous()
+    println(paladin)
+    paladin.judgment(littleDragon)
+    println(paladin)
+    paladin.attack(littleDragon)
+    paladin.expGain()
+    println(paladin)
+    warrior.attack(littleDragon)
+    println(warrior)
+    warrior.attack(littleDragon)
+    warrior.attack(littleDragon)
+    println(warrior)
+    warrior.attack(littleDragon)
+    warrior.attack(littleDragon)
 
-    if (paladin.health <= 0) {
-        println("${paladin.name} has been defeated. Game over!")
-    } else {
-        println("${littleDragon.name} has been defeated. ${paladin.name} wins!")
-        paladin.expGain()
-        paladin.expGain()
-        paladin.expGain()
-    }
+    warrior.execute(littleDragon)
+    warrior.execute(littleDragon)
+    println(warrior)
+
+
 }
