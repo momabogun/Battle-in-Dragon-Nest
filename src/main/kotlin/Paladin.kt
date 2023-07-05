@@ -14,32 +14,32 @@ class Paladin(
 
     fun judgment(target: Enemy,) {
         println("Paladin mana: ${this.mana}")
-        paladin.manaUsage(100)
         if (mana < 100) {
             println("You have no mana for this Spell!!")
         } else {
+            paladin.manaUsage(100)
             println("${this.name} casted Judgment!!")
             val judgment = attackPower + ((abilityPower / 2) * level)
             target.takeDamage(judgment)
         }
     }
     fun healOfRighteous(){
-        paladin.manaUsage(abilityPower)
         if (mana < abilityPower){
             println("You have no mana for this Spell!!")
         } else if (this.health == this.maxHealth){
             println("You have already full HP!!")
 
             }else {
+            paladin.manaUsage(abilityPower)
                 paladin.heal(abilityPower)
             println("${this.name} has ${this.health}/${this.maxHealth}")
             }
         }
     fun wingsOfJustice(){
-        paladin.manaUsage(300)
         if (mana < 300) {
             println("You have no mana for this Spell!!")
         } else{
+            paladin.manaUsage(300)
             println("ULTIMATE. ${this.name} has now new form Wings of Justice")
             abilityPower *= 4
             attackPower *= 2
