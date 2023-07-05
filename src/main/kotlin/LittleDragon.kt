@@ -1,13 +1,9 @@
 class LittleDragon(
     name: String,
-    attackPower: Int): Enemy(name,attackPower) {
-    val maxHealth:Int = 2500
-    override var health = maxHealth
-        set(value) {
-            field = value.coerceIn(0, maxHealth)
-        }
-
+    maxHP:Int,
+    attackPower: Int): Enemy(name,maxHP,attackPower) {
     fun fireBolt():Int{
+        println("${this.name} casted Fire Bolt!!")
             return attackPower * (1..2).random()
         }
 

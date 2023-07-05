@@ -1,17 +1,15 @@
 class Paladin(
     name: String,
-    abilityPower: Int,
+    maxHP: Int,
     level: Int,
-    mana: Int,
+    exp :Int,
+    maxMana: Int,
     attackPower: Int,
-    ): Heroes(name,abilityPower,level,mana,attackPower) {
-    val maxHealth:Int = 2500
-        override var health = maxHealth
-            set(value) {
-                field = value.coerceIn(0, maxHealth)
-            }
+    ): Heroes(name,maxHP,level,exp,maxMana,attackPower) {
+        private var abilityPower = 100*level
 
     fun judgment(): Int {
+        println("${this.name} casted Judgment!!")
         return attackPower + ((abilityPower / 2) * level)
     }
     fun healOfRighteous(){
@@ -28,5 +26,6 @@ class Paladin(
             println("${this.name} has ${this.health}/${this.maxHealth}")
             }
         }
+
 
     }

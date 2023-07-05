@@ -1,5 +1,5 @@
-var paladin:Paladin = Paladin("Arthas",2500,1,200,200)
-var littleDragon:LittleDragon= LittleDragon("Wasp",200)
+var paladin:Paladin = Paladin("Arthas",2500,1,0,800,100)
+var littleDragon:LittleDragon= LittleDragon("Wasp",1000,100)
 
 
 fun main(){
@@ -16,5 +16,8 @@ fun main(){
         println("${paladin.name} has been defeated. Game over!")
     } else {
         println("${littleDragon.name} has been defeated. ${paladin.name} wins!")
+        paladin.expGain()
+        paladin.expGain()
+        paladin.expGain()
     }
 }

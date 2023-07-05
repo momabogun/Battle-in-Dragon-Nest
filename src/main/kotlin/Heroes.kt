@@ -1,11 +1,21 @@
 open class Heroes(
     val name: String,
-    var abilityPower: Int,
+    var maxHP:Int,
     var level: Int,
-    var mana: Int,
+    var exp :Int,
+    var maxMana: Int,
     var attackPower: Int,
 ){
-    open var health: Int = 1500
+    val maxHealth:Int = maxHP
+    private val maxM:Int = maxMana
+    var health = maxHealth
+        set(value) {
+            field = value.coerceIn(0, maxHealth)
+        }
+    var mana = maxM
+        set(value) {
+            field = value.coerceIn(0,maxM)
+        }
 
     fun takeDamage(damage:Int){
         health -= damage
@@ -15,6 +25,36 @@ open class Heroes(
             println("${this.name} has been slain in Battle!!")
 
         }
+    }
+    fun expGain(){
+        exp += 300
+        if (exp == 300){
+            level += 1
+            attackPower += 50
+            maxHP += 100
+            maxMana +=20
+
+            println("Congratulation your ${this.name} has become lvl ${this.level}!")
+        }
+        if (exp == 900){
+            level +=1
+            attackPower += 85
+            maxHP += 300
+            maxMana +=50
+            println("Congratulation your ${this.name} has become lvl ${this.level}!")
+        }
+        if (exp == 1800){
+            level +=1
+            attackPower += 100
+            maxHP += 500
+            maxMana +=50
+            println("Congratulation your ${this.name} has become lvl ${this.level}!")
+        }
+
+    }
+    fun attack (): Int{
+        mana += 20
+        return attackPower * level
     }
 
 
