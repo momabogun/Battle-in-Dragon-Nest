@@ -7,6 +7,9 @@ maxMana: Int,
 attackPower: Int,
 abilityPower:Int
 ):Heroes(name,maxHP,level,exp,maxMana,attackPower,abilityPower) {
+    override fun toString(): String {
+        return "\n[3]${this.name}(Mage, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
+    }
 
     fun frostBolt(target: Enemy){
         if (mana<100){

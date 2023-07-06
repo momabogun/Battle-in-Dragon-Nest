@@ -66,7 +66,10 @@ open class Heroes(
     fun heal(heal:Int){
         health += heal
     }
+    fun heroDead():Boolean{
+        return this.health <= 0
 
+    }
 
 
 
