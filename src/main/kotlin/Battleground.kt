@@ -7,18 +7,25 @@ class Battleground {
     )
     var enemies = mutableListOf<Enemy>(
         littleDragon,
-        littleDragon,
-        littleDragon,
-        littleDragon
+        littleDragon1,
+        littleDragon2,
+        littleDragon3,
+        littleDragon4
     )
 
     fun entranceBattle(){
-        if (littleDragon.enemyDead()){
-            enemies.removeAt(0)
-            for (hero in heroes){
-                hero.expGain()
+        while (heroes.isNotEmpty() || enemies.isNotEmpty()){
+            for (enemy in enemies){
+                if (enemy.enemyDead()){
+                    enemies.remove(enemy)
+                    for (hero in heroes){
+                        hero.expGain()
+                    }
+                }
             }
+
         }
+
     }
 
 

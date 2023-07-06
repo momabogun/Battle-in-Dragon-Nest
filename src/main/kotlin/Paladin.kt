@@ -9,7 +9,7 @@ class Paladin(
 
     ): Heroes(name,maxHP,level,exp,maxMana,attackPower, abilityPower) {
     override fun toString(): String {
-        return "${this.name} ${this.maxHP} ${this.level} ${this.exp} ${this.maxMana} ${this.mana}"
+        return "${this.name}(lvl: ${this.level},exp: ${this.exp})\n${this.maxHP}/${this.health} HP\n${this.maxMana}/${this.mana} Mana"
     }
 
     fun judgment(target: Enemy,) {
@@ -41,12 +41,15 @@ class Paladin(
         } else{
             paladin.manaUsage(300)
             println("ULTIMATE. ${this.name} has now new form Wings of Justice")
-            abilityPower *= 4
-            attackPower *= 2
-            maxHP += 300
-            maxMana += 200
+            this.abilityPower *= 4
+            this.attackPower *= 2
+            this.maxHP += 300
+            this.maxMana += 200
 
         }
+
+    }
+    fun aktionAuswahlen(){
 
     }
 
