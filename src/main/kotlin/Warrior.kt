@@ -8,7 +8,7 @@ class Warrior(
     override var abilityPower: Int = 0
     ):Heroes(name,maxHP,level,exp,maxMana,attackPower,abilityPower) {
     override fun toString(): String {
-        return "\n[2]${this.name}(Warrior, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
+        return "\n[2] -> ${this.name}(Warrior, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
     }
 
     override var mana = 0

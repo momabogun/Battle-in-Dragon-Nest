@@ -9,7 +9,7 @@ class Paladin(
 
     ): Heroes(name,maxHP,level,exp,maxMana,attackPower, abilityPower) {
     override fun toString(): String {
-        return "\n[1]${this.name}(Paladin, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
+        return "\n[1] -> ${this.name}(Paladin, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
     }
 
     fun judgment(target: Enemy,) {
