@@ -7,7 +7,7 @@ attackPower: Int,
 abilityPower:Int
 ):Heroes(name,maxHP,level,exp,maxMana,attackPower,abilityPower) {
     override fun toString(): String {
-        return "\n[4] -> ${this.name}(Priest, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
+        return "\n[3] -> ${this.name}(Priest, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
     }
     fun healTouch(target:Heroes){
         if (mana<200){

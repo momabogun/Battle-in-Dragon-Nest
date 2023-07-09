@@ -7,10 +7,12 @@ var littleDragon1:LittleDragon= LittleDragon("Marble",100,200)
 var littleDragon2:LittleDragon= LittleDragon("Tito",100,200)
 var littleDragon3:LittleDragon= LittleDragon("Gregy",100,200)
 var littleDragon4:LittleDragon= LittleDragon("Otto",100,200)
+var bossDragon :Dragon = Dragon("FIREZILLA",560,2000)
 var battleground:Battleground= Battleground()
 
 fun main(){
     battleground.entranceBattle()
+    battleground.bossBattle()
 
 
 
