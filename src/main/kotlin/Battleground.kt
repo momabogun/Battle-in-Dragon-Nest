@@ -47,8 +47,13 @@ class Battleground {
                 0 -> {
                     do {
                         println(paladin)
+                        var auswahl = 0
                         println("\n[0] -> Attack with sword \n[1] -> Judgment(costs 100 mana)\n[2] -> Heal Of Righteous(costs ${paladin.abilityPower})\n[3] -> Wings of Justice (costs 300 mana)")
-                        var auswahl = readln().toInt()
+                            try {
+                                auswahl = readln().toInt()
+                            } catch (e: Exception) {
+                                println("You have to type number, not letter!!")
+                            }
                         when (auswahl) {
                             0 -> {
                                 paladin.attack(enemies.random())
@@ -78,8 +83,14 @@ class Battleground {
                 1 -> {
                     do {
                         println(warrior)
+                        var auswahl = 0
                         println("\n[0] -> Attack with sword \n[1] -> Bladestorm (costs 100 mana)\n[2] -> Mortal Strike (costs 100 mana)\n[32] -> Execute (costs 300 mana)")
-                        var auswahl = readln().toInt()
+                        try {
+                            auswahl = readln().toInt()
+                        } catch (e: Exception){
+                            println("You have to type number, not letter!!")
+                        }
+
                         when (auswahl) {
                             0 -> {
                                 warrior.attack(enemies.random())
@@ -108,8 +119,13 @@ class Battleground {
                 2 -> {
                     do {
                         println(mage)
+                        var auswahl = 0
                         println("\n[0] -> Attack with wand \n[1] -> Frostbolt(costs 100 mana) \n[2] -> Rain of Fire (costs 200 mana)\n[32] -> Plasma Beam (costs 500 mana)")
-                        val auswahl = readln().toInt()
+                        try {
+                            auswahl = readln().toInt()
+                        } catch (e: Exception){
+                            println("You have to type number, not letter!!")
+                        }
                         when (auswahl) {
                             0 -> {
                                 mage.attack(enemies.random())
@@ -138,8 +154,13 @@ class Battleground {
 
                 3 -> do {
                     println(priest)
+                    var auswahl = 0
                     println("\n[0] -> Attack with wand \n[1] -> Heal Touch (costs 200 mana)\n[2] -> Lighting Bolt (costs 100 mana)\n[32] -> Mass Heal (costs 500 mana)")
-                    var auswahl = readln().toInt()
+                    try {
+                        auswahl = readln().toInt()
+                    } catch (e: Exception){
+                        println("You have to type number, not letter!!")
+                    }
                     when (auswahl) {
                         0 -> {
                             priest.attack(enemies.random())

@@ -3,6 +3,9 @@ class Dragon(
     attackPower: Int,
     maxHP : Int
 ):Enemy(name,attackPower,maxHP) {
+    override fun toString(): String {
+        return this.name
+    }
     fun fireBreath(target: Heroes){
         println("${this.name} casted Fire Breath!!")
         val fireBreath = attackPower * (1..2).random()
