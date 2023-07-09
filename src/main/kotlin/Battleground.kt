@@ -211,15 +211,9 @@ class Battleground {
                 heroes.addAll(newListHeroes)
                 println("What hero are you choosing to attack an Enemy?")
                 println(heroes)
-                var auswahlHero = readln().toInt()
+
                 do {
-                    try {
-                        auswahlHero = readln().toInt()
-                    } catch (e: NumberFormatException) {
-                        println("You must type the number not letter!! ")
-                    } catch (e: ArrayIndexOutOfBoundsException) {
-                        println("You must pick Hero thats alive!!")
-                    }
+                    var auswahlHero = readln().toInt()
                     when (auswahlHero) {
                         0 -> {
                             do {
