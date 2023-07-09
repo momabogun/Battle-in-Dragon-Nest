@@ -1,7 +1,8 @@
 class LittleDragon(
     name: String,
-    maxHP:Int,
-    attackPower: Int): Enemy(name,maxHP,attackPower) {
+    health : Int,
+    attackPower: Int
+):Enemy(name,health,attackPower) {
     override fun toString(): String {
         return this.name
     }

@@ -28,84 +28,158 @@ class Battleground {
             }
             heroes.clear()
             heroes.addAll(newListHeroes)
-            println("What hero are you choosing to attack an Enemy?")
-            println(heroes)
-            var auswahlHero = 2
-            try {
-                auswahlHero= readln().toInt()
-                if (auswahlHero>3){
-                    throw IndexOutOfBoundsException ("You have to pick between our 4 Heroes!!")
+            if (heroes.isEmpty()){
+                println("All Heroes are dead.....\n GAME OVER")
+                break
+            }else {
+                println("What hero are you choosing to attack an Enemy?")
+                println(heroes)
+                var auswahlHero = 2
+                try {
+                    auswahlHero = readln().toInt()
+                    if (auswahlHero > 3) {
+                        throw IndexOutOfBoundsException("You have to pick between our 4 Heroes!!")
+                    }
+                } catch (e: NumberFormatException) {
+                    println("You must type the number not letter!! ")
+                } catch (e: ArrayIndexOutOfBoundsException) {
+                    println("You must pick Hero thats alive!!")
+                } catch (e: IndexOutOfBoundsException) {
+                    println("Please try again!")
                 }
-            } catch (e: NumberFormatException){
-                println("You must type the number not letter!! ")
-            } catch (e: ArrayIndexOutOfBoundsException){
-                println("You must pick Hero thats alive!!")
-            } catch (e: IndexOutOfBoundsException){
-                println("Please try again!")
-            }
-            when (auswahlHero) {
-                0 -> {
-                    do {
-                        println(paladin)
-                        var auswahl = 0
-                        println("\n[0] -> Attack with sword \n[1] -> Judgment(costs 100 mana)\n[2] -> Heal Of Righteous(costs ${paladin.abilityPower})\n[3] -> Wings of Justice (costs 300 mana)")
+                when (auswahlHero) {
+                    0 -> {
+                        do {
+                            println(paladin)
+                            var auswahl = 0
+                            println("\n[0] -> Attack with sword \n[1] -> Judgment(costs 100 mana)\n[2] -> Heal Of Righteous(costs ${paladin.abilityPower})\n[3] -> Wings of Justice (costs 300 mana)")
                             try {
                                 auswahl = readln().toInt()
                             } catch (e: Exception) {
                                 println("You have to type number, not letter!!")
                             }
-                        when (auswahl) {
-                            0 -> {
-                                paladin.attack(enemies.random())
+                            when (auswahl) {
+                                0 -> {
+                                    paladin.attack(enemies.random())
+                                }
+
+                                1 -> {
+                                    paladin.judgment(enemies.random())
+                                }
+
+                                2 -> {
+                                    paladin.healOfRighteous()
+                                }
+
+                                3 -> {
+                                    paladin.wingsOfJustice()
+                                }
+
+                                else -> {
+                                    println("False Number from attack, try again!")
+                                    println("-----------------------------------")
+                                }
+                            }
+                        } while (auswahl > 3)
+
+                    }
+
+                    1 -> {
+                        do {
+                            println(warrior)
+                            var auswahl = 0
+                            println("\n[0] -> Attack with sword \n[1] -> Bladestorm (costs 100 mana)\n[2] -> Mortal Strike (costs 100 mana)\n[32] -> Execute (costs 300 mana)")
+                            try {
+                                auswahl = readln().toInt()
+                            } catch (e: Exception) {
+                                println("You have to type number, not letter!!")
                             }
 
-                            1 -> {
-                                paladin.judgment(enemies.random())
+                            when (auswahl) {
+                                0 -> {
+                                    warrior.attack(enemies.random())
+                                }
+
+                                1 -> {
+                                    warrior.bladeStorm(enemies)
+                                }
+
+                                2 -> {
+                                    warrior.mortalStrike(enemies.random())
+                                }
+
+                                3 -> {
+                                    warrior.execute(enemies.random())
+                                }
+
+                                else -> {
+                                    println("False Number from attack, try again!")
+                                    println("-----------------------------------")
+                                }
                             }
+                        } while ((auswahl > 3))
+                    }
 
-                            2 -> {
-                                paladin.healOfRighteous()
+                    2 -> {
+                        do {
+                            println(mage)
+                            var auswahl = 0
+                            println("\n[0] -> Attack with wand \n[1] -> Frostbolt(costs 100 mana) \n[2] -> Rain of Fire (costs 200 mana)\n[32] -> Plasma Beam (costs 500 mana)")
+                            try {
+                                auswahl = readln().toInt()
+                            } catch (e: Exception) {
+                                println("You have to type number, not letter!!")
                             }
+                            when (auswahl) {
+                                0 -> {
+                                    mage.attack(enemies.random())
+                                }
 
-                            3 -> {
-                                paladin.wingsOfJustice()
+                                1 -> {
+                                    mage.frostBolt(enemies.random())
+                                }
+
+                                2 -> {
+                                    mage.rainOfFire(enemies)
+                                }
+
+                                3 -> {
+                                    mage.plasmaBeam(enemies.random())
+                                }
+
+                                else -> {
+                                    println("False Number from attack, try again!")
+                                    println("-----------------------------------")
+                                }
                             }
+                        } while ((auswahl > 3))
 
-                            else -> {
-                                println("False Number from attack, try again!")
-                                println("-----------------------------------")
-                            }
-                        }
-                    } while (auswahl > 3)
+                    }
 
-                }
-
-                1 -> {
-                    do {
-                        println(warrior)
+                    3 -> do {
+                        println(priest)
                         var auswahl = 0
-                        println("\n[0] -> Attack with sword \n[1] -> Bladestorm (costs 100 mana)\n[2] -> Mortal Strike (costs 100 mana)\n[32] -> Execute (costs 300 mana)")
+                        println("\n[0] -> Attack with wand \n[1] -> Heal Touch (costs 200 mana)\n[2] -> Lighting Bolt (costs 100 mana)\n[32] -> Mass Heal (costs 500 mana)")
                         try {
                             auswahl = readln().toInt()
-                        } catch (e: Exception){
+                        } catch (e: Exception) {
                             println("You have to type number, not letter!!")
                         }
-
                         when (auswahl) {
                             0 -> {
-                                warrior.attack(enemies.random())
+                                priest.attack(enemies.random())
                             }
 
                             1 -> {
-                                warrior.bladeStorm(enemies)
+                                priest.healTouch(heroes.random())
                             }
 
                             2 -> {
-                                warrior.mortalStrike(enemies.random())
+                                priest.lightingBolt(enemies.random())
                             }
 
                             3 -> {
-                                warrior.execute(enemies.random())
+                                priest.massHeal(heroes)
                             }
 
                             else -> {
@@ -115,75 +189,6 @@ class Battleground {
                         }
                     } while ((auswahl > 3))
                 }
-
-                2 -> {
-                    do {
-                        println(mage)
-                        var auswahl = 0
-                        println("\n[0] -> Attack with wand \n[1] -> Frostbolt(costs 100 mana) \n[2] -> Rain of Fire (costs 200 mana)\n[32] -> Plasma Beam (costs 500 mana)")
-                        try {
-                            auswahl = readln().toInt()
-                        } catch (e: Exception){
-                            println("You have to type number, not letter!!")
-                        }
-                        when (auswahl) {
-                            0 -> {
-                                mage.attack(enemies.random())
-                            }
-
-                            1 -> {
-                                mage.frostBolt(enemies.random())
-                            }
-
-                            2 -> {
-                                mage.rainOfFire(enemies)
-                            }
-
-                            3 -> {
-                                mage.plasmaBeam(enemies.random())
-                            }
-
-                            else -> {
-                                println("False Number from attack, try again!")
-                                println("-----------------------------------")
-                            }
-                        }
-                    } while ((auswahl > 3))
-
-                }
-
-                3 -> do {
-                    println(priest)
-                    var auswahl = 0
-                    println("\n[0] -> Attack with wand \n[1] -> Heal Touch (costs 200 mana)\n[2] -> Lighting Bolt (costs 100 mana)\n[32] -> Mass Heal (costs 500 mana)")
-                    try {
-                        auswahl = readln().toInt()
-                    } catch (e: Exception){
-                        println("You have to type number, not letter!!")
-                    }
-                    when (auswahl) {
-                        0 -> {
-                            priest.attack(enemies.random())
-                        }
-
-                        1 -> {
-                            priest.healTouch(heroes.random())
-                        }
-
-                        2 -> {
-                            priest.lightingBolt(enemies.random())
-                        }
-
-                        3 -> {
-                            priest.massHeal(heroes)
-                        }
-
-                        else -> {
-                            println("False Number from attack, try again!")
-                            println("-----------------------------------")
-                        }
-                    }
-                } while ((auswahl > 3))
             }
 
             val newListEnemy = mutableListOf<Enemy>()
@@ -324,7 +329,7 @@ class Battleground {
 
                 3 -> do {
                     println(priest)
-                    println("\n[0] -> Attack with wand \n[1] -> Heal Touch (costs 200 mana)\n[2] -> Lighting Bolt (costs 100 mana)\n[32] -> Mass Heal (costs 500 mana)")
+                    println("\n[0] -> Attack with wand \n[1] -> Heal Touch (costs 200 mana)\n[2] -> Lighting Bolt (costs 100 mana)\n[3] -> Mass Heal (costs 500 mana)")
                     var auswahl = readln().toInt()
                     when (auswahl) {
                         0 -> {
@@ -360,8 +365,23 @@ class Battleground {
             boss.clear()
             boss.addAll(newListEnemy)
             if (boss.isNotEmpty()) {
-                var dragon = boss.filterIsInstance<Dragon>()
-                dragon.random().fireBreath(heroes.random())
+                if (bossDragon.health >= 1500){
+                    var dragon = boss.filterIsInstance<Dragon>()
+                    dragon.random().fireBreath(heroes.random())
+                }
+                if (bossDragon.health < 1500){
+                    var dragon = boss.filterIsInstance<Dragon>()
+                    dragon.random().fireBreath(heroes.random())
+                    dragon.random().fireStrength()
+                }
+                if (bossDragon.health < 1000){
+                    var dragon = boss.filterIsInstance<Dragon>()
+                    dragon.random().fireFromWithin(heroes)
+                }
+                if (bossDragon.health < 500) {
+                    var dragon = boss.filterIsInstance<Dragon>()
+                    dragon.random().cataclysm(heroes.random())
+                }
             } else {
                 println("You won the battle against mighty $bossDragon!! Congratulations, the realm is now in safe place!!")
                 break

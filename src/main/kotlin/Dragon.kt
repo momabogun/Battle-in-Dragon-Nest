@@ -1,8 +1,8 @@
 class Dragon(
     name: String,
-    attackPower: Int,
-    maxHP : Int
-):Enemy(name,attackPower,maxHP) {
+    health : Int,
+    attackPower: Int
+):Enemy(name,health,attackPower) {
     override fun toString(): String {
         return this.name
     }
@@ -17,7 +17,7 @@ class Dragon(
         println("His attack power is now ${this.attackPower}")
     }
     fun fireFromWithin(target: MutableList<Heroes>){
-        val fireFrom = attackPower/2
+        val fireFrom = attackPower/3
         for (hero in target){
             hero.takeDamage(fireFrom)
         }
