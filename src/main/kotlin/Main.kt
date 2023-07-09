@@ -12,6 +12,7 @@ var battleground:Battleground= Battleground()
 
 fun main(){
     battleground.entranceBattle()
+    println()
     battleground.bossBattle()
 
 
