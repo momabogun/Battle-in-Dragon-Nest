@@ -191,7 +191,7 @@ class Battleground {
             heroes.clear()
             heroes.addAll(newListHeroes)
             if (heroes.isEmpty()) {
-                println("All Heroes are dead.....\n GAME OVER")
+                println("All Heroes are dead......\n GAME OVER")
                 break
             }
 
