@@ -1,13 +1,15 @@
+import java.lang.Exception
+
 class Priest(name: String,
-    maxHP:Int,
-level: Int,
-exp :Int,
-maxMana: Int,
-attackPower: Int,
-abilityPower:Int
+             maxHP:Int,
+             level: Int,
+             exp :Int,
+             maxMana: Int,
+             attackPower: Int,
+             abilityPower:Int
 ):Heroes(name,maxHP,level,exp,maxMana,attackPower,abilityPower) {
     override fun toString(): String {
-        return "\n[3] -> ${this.name}(Priest, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
+        return "\n[4] -> ${this.name}(Priest, lvl: ${this.level},exp: ${this.exp})\n⚔️ ${this.attackPower} Attack Power\n🪄 ${this.abilityPower} Ability Power\n❤️ ${this.health}/${this.maxHP} HP\n🔹 ${this.mana}/${this.maxMana} Mana"
     }
     fun healTouch(target:Heroes){
         if (mana<200){
@@ -37,10 +39,46 @@ abilityPower:Int
         }
     }
 
+    fun spells(enemies: MutableList<Enemy>, heroes: MutableList<Heroes>) {
+        println("---------------------------------")
+        println("Great choice, you chose ${this.name}")
+        while (true) {
+            println(priest)
+            println("---------------------------------")
+            println("Choose your attack:")
+            println("[1] -> Attack with wand \n[2] -> Heal Touch (costs 200 mana)\n[3] -> Lighting Bolt (costs 100 mana)\n[4] -> Mass Heal (costs 500 mana)")
+            try {
+                val auswahl = readln().toInt()
+                when (auswahl) {
+                    1 -> {
+                        priest.attack(enemies.random())
+                        break
+                    }
 
+                    2 -> {
+                        priest.healTouch(heroes.random())
+                        break
+                    }
 
+                    3 -> {
+                        priest.lightingBolt(enemies.random())
+                        break
+                    }
 
+                    4 -> {
+                        priest.massHeal(heroes)
+                        break
+                    }
 
-
-
+                    else -> {
+                        println("False Number from attack, try again!")
+                        println("-----------------------------------")
+                    }
+                }
+            } catch (e: Exception) {
+                println("You have to type number, not letter!!")
+            }
+        }
+        println("---------------------------------")
+    }
 }

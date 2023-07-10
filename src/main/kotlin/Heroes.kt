@@ -70,6 +70,9 @@ open class Heroes(
         return this.health <= 0
 
     }
+    open fun spells(enemies: MutableList<Enemy>) {
+
+    }
 
 
 
