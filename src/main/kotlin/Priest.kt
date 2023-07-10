@@ -15,6 +15,7 @@ class Priest(name: String,
         if (mana<200){
             println("You have no mana for this Spell!!")
         } else{
+            println("${this.name} casts healing touch on ${target.name}")
             priest.manaUsage(200)
             target.heal(200)
         }
@@ -23,6 +24,7 @@ class Priest(name: String,
         if (mana < 100){
             println("You have no mana for this Spell!!")
         } else{
+            println("${this.name} casts lighting bolt on $target")
             priest.manaUsage(100)
             target.takeDamage(abilityPower)
         }
@@ -32,6 +34,7 @@ class Priest(name: String,
         if (mana < 500){
             println("You have no mana for this Spell!!")
         } else{
+            println("ULTIMATE: ${this.name} casts Mass Heal on his allies")
             priest.manaUsage(500)
             for (hero in target){
                 hero.heal(abilityPower/2)

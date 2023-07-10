@@ -17,6 +17,8 @@ class Dragon(
         println("His attack power is now ${this.attackPower}")
     }
     fun fireFromWithin(target: MutableList<Heroes>){
+        ("${this.name} casted Fire from Within!!")
+        Thread.sleep(2100)
         val fireFrom = attackPower/3
         for (hero in target){
             hero.takeDamage(fireFrom)
@@ -24,6 +26,8 @@ class Dragon(
 
     }
     fun cataclysm(target: Heroes){
+        ("${this.name} casted Cataclysm on ${target.name}!!")
+        Thread.sleep(2100)
         val cataclysm = attackPower*200
         target.takeDamage(cataclysm)
     }

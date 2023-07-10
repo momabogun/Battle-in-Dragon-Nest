@@ -1,6 +1,6 @@
 import java.lang.Exception
 
-class Battleground {
+class Battleground (var name: String){
     var heroes = mutableListOf<Heroes>(
         paladin,
         warrior,
@@ -19,7 +19,7 @@ class Battleground {
     )
 
     fun entranceBattle() {
-        println("Welcome to the Entrance Battle!! Our Heroes facing 5 Dragons....")
+        println("Welcome to the ${this.name}!! Our Heroes facing 5 Dragons....")
         println("---------------------------------")
         Thread.sleep(1000)
         var i = 0
@@ -79,6 +79,10 @@ class Battleground {
                 println()
             } else {
                 println("You won the entrance battle. Congratulations!!")
+                Thread.sleep(2000)
+                println(".........")
+                println("But new foe is closing near")
+                Thread.sleep(1000)
                 break
             }
             val newListHeroes = mutableListOf<Heroes>()
@@ -98,6 +102,15 @@ class Battleground {
     }
 
     fun bossBattle() {
+        if (heroes.isNotEmpty()) {
+            println("++++++ BOSS BATTLE ++++++")
+            println("---------------------------------")
+            println("Boss has arrived in ${this.name}!! Our Heroes facing mighty $bossDragon")
+            println("---------------------------------")
+        } else {
+            println(".....")
+        }
+        Thread.sleep(1000)
         var i = 0
         while (heroes.isNotEmpty() || boss.isNotEmpty()) {
             if (heroes.isEmpty()){
@@ -151,23 +164,29 @@ class Battleground {
             boss.clear()
             boss.addAll(newListEnemy)
             if (boss.isNotEmpty()) {
+                println("$bossDragon turn:")
+                Thread.sleep(2000)
                 if (bossDragon.health >= 1500) {
                     var dragon = boss.filterIsInstance<Dragon>()
                     dragon.random().fireBreath(heroes.random())
+                    Thread.sleep(2000)
                 }
                 if (bossDragon.health < 500) {
                     var dragon = boss.filterIsInstance<Dragon>()
                     dragon.random().cataclysm(heroes.random())
+                    Thread.sleep(2000)
                 }
                 else if (bossDragon.health < 1000) {
                     var dragon = boss.filterIsInstance<Dragon>()
                     dragon.random().fireFromWithin(heroes)
                     dragon.random().fireStrength()
+                    Thread.sleep(2000)
                 }
                 else if (bossDragon.health < 1500) {
                     var dragon = boss.filterIsInstance<Dragon>()
                     dragon.random().fireBreath(heroes.random())
                     dragon.random().fireStrength()
+                    Thread.sleep(2000)
                 }
 
             } else {

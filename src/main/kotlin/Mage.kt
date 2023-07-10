@@ -17,6 +17,7 @@ class Mage(
         if (mana < 100) {
             println("You have no Mana for this spell!!")
         } else {
+            println("${this.name} casts Frost Bolt on $target")
             mage.manaUsage(100)
             val frostBolt = abilityPower * (1..2).random()
             target.takeDamage(frostBolt)
