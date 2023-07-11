@@ -1,4 +1,4 @@
-val paladin:Paladin = Paladin("Altras Lighthammer",2500,1,0,1500,100,1000)
+val paladin:Paladin = Paladin("Altras Lighthammer",2500,1,0,1100,100,1000)
 var warrior:Warrior = Warrior("Fabian Wyrm",2300,1,0,500,200)
 var mage:Mage= Mage("Jessica Stormwind", 1800,1,0,600,20,300)
 var priest:Priest =Priest("Adrian Wyrm",1500,1,0,600,20,200)

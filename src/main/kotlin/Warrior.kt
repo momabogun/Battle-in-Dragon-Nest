@@ -15,8 +15,9 @@ class Warrior(
 
     override var mana = 0
     fun bladeStorm(target: MutableList<Enemy>) {
-        if (mana < 100) {
+        if (mana < 200) {
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else {
             warrior.manaUsage(100)
             println("${this.name} casted Blade Storm!!")
@@ -30,6 +31,7 @@ class Warrior(
     fun mortalStrike(target: Enemy) {
         if (mana < 100) {
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else {
             warrior.manaUsage(100)
             println("${this.name} casted Mortal Strike!!")
@@ -41,6 +43,7 @@ class Warrior(
     fun execute(target: Enemy) {
         if (mana < 300) {
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else {
             warrior.manaUsage(300)
             println("ULTIMATE.${this.name} casted Execute!!")
@@ -51,47 +54,73 @@ class Warrior(
     }
 
     override fun spells(enemies: MutableList<Enemy>) {
-        println("---------------------------------")
-        println("Great choice, you chose ${this.name}, beware warrior gains mana with normal attacks!")
-        while (true) {
-            println(warrior)
+        if (!warrior.heroDead()) {
             println("---------------------------------")
-            println("Choose your attack:")
-            println("[1] -> Attack with sword \n[2] -> Bladestorm (costs 100 mana)\n[3] -> Mortal Strike (costs 100 mana)\n[4] -> Execute (costs 300 mana)")
-            try {
-                var auswahl = readln().toInt()
-                when (auswahl) {
-                    1 -> {
-                        warrior.attack(enemies.random())
-                        break
-                    }
-
-                    2 -> {
-                        warrior.bladeStorm(enemies)
-                        break
-                    }
-
-                    3 -> {
-                        warrior.mortalStrike(enemies.random())
-                        break
-                    }
-
-                    4 -> {
-                        warrior.execute(enemies.random())
-                        break
-                    }
-
-                    else -> {
-                        println("False Number from attack, try again!")
-                        println("-----------------------------------")
-                    }
-                }
-            } catch (e: Exception) {
-                println("You have to type number, not letter!!")
-
-            }
+            println("Great choice, you chose ${this.name}, beware warrior gains mana with normal attacks!")
         }
-        println("---------------------------------")
+        while (true) {
+            if (!warrior.heroDead()) {
+                println(warrior)
+                println("---------------------------------")
+                println("Choose your attack:")
+                println("[1] -> Attack with sword \n[2] -> Bladestorm (costs 200 mana)\n[3] -> Mortal Strike (costs 100 mana)\n[4] -> Execute (costs 300 mana)")
+                try {
+                    var auswahl = readln().toInt()
+                    when (auswahl) {
+                        1 -> {
+                            warrior.attack(enemies.random())
+                            break
+                        }
+
+                        2 -> {
+                            if (mana < 200) {
+                                warrior.bladeStorm(enemies)
+                                continue
+                            } else {
+                                warrior.bladeStorm(enemies)
+                                break
+                            }
+
+                        }
+
+                        3 -> {
+                            if (mana < 100) {
+                                warrior.mortalStrike(enemies.random())
+                                continue
+                            } else {
+                                warrior.mortalStrike(enemies.random())
+                                break
+                            }
+
+                        }
+
+                        4 -> {
+                            if (mana < 500) {
+                                warrior.execute(enemies.random())
+                                continue
+                            } else {
+                                warrior.execute(enemies.random())
+                                break
+                            }
+
+                        }
+
+                        else -> {
+                            println("False Number from attack, try again!")
+                            println("-----------------------------------")
+                        }
+                    }
+                } catch (e: Exception) {
+                    println("You have to type number, not letter!!")
+
+                }
+
+                } else{
+                println("This hero is DEAD!!")
+                break
+            }
+            println("---------------------------------")
+        }
     }
 
 

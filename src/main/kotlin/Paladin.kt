@@ -18,6 +18,7 @@ class Paladin(
         println("Paladin mana: ${this.mana}")
         if (mana < 100) {
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else {
             paladin.manaUsage(100)
             println("${this.name} casted Judgment!!")
@@ -29,6 +30,7 @@ class Paladin(
     fun healOfRighteous() {
         if (mana < abilityPower) {
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else if (this.health == this.maxHealth) {
             println("You have already full HP!!")
 
@@ -42,6 +44,7 @@ class Paladin(
     fun wingsOfJustice() {
         if (mana < 300) {
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else {
             paladin.manaUsage(300)
             println("ULTIMATE. ${this.name} has now new form Wings of Justice")
@@ -55,50 +58,74 @@ class Paladin(
     }
 
     override fun spells(enemies: MutableList<Enemy>) {
-        println("---------------------------------")
-        println("Great choice, you chose ${this.name}")
-        while (true) {
-            println(paladin)
+        if (!paladin.heroDead()) {
             println("---------------------------------")
-            println("Choose your attack:")
-            println("[1] -> Attack with sword \n[2] -> Judgment(costs 100 mana)\n[3] -> Heal Of Righteous(costs ${paladin.abilityPower})\n[4] -> Wings of Justice (costs 300 mana)")
-            try {
-                var auswahl = readln().toInt()
-                when (auswahl) {
-                    1 -> {
-                        paladin.attack(enemies.random())
-                        break
-                    }
-
-                    2 -> {
-                        paladin.judgment(enemies.random())
-                        break
-                    }
-
-                    3 -> {
-                        paladin.healOfRighteous()
-                        break
-                    }
-
-                    4 -> {
-                        paladin.wingsOfJustice()
-                        break
-                    }
-
-                    else -> {
-                        println("False Number from attack, try again!")
-                        println("-----------------------------------")
-                    }
-                }
-            } catch (e: Exception) {
-                println("You have to type number, not letter!!")
-
-            }
+            println("Great choice, you chose ${this.name}")
         }
-        println("---------------------------------")
+        while (true) {
+            if (!paladin.heroDead()) {
+                println(paladin)
+                println("---------------------------------")
+                println("Choose your attack:")
+                println("[1] -> Attack with sword \n[2] -> Judgment(costs 100 mana)\n[3] -> Heal Of Righteous(costs ${paladin.abilityPower})\n[4] -> Wings of Justice (costs 300 mana)")
+                try {
+                    var auswahl = readln().toInt()
+                    when (auswahl) {
+                        1 -> {
+                            paladin.attack(enemies.random())
+                            break
+                        }
+
+                        2 -> {
+                            if (mana < 100) {
+                                paladin.judgment(enemies.random())
+                                continue
+                            } else {
+                                paladin.judgment(enemies.random())
+                                break
+                            }
+                        }
+
+                        3 -> {
+                            if (mana < abilityPower || this.health == this.maxHealth) {
+                                paladin.healOfRighteous()
+                                continue
+                            } else {
+                                paladin.healOfRighteous()
+                                break
+                            }
+
+                        }
+
+                        4 -> {
+                            if (mana < 300) {
+                                paladin.wingsOfJustice()
+                                continue
+                            } else {
+                                paladin.wingsOfJustice()
+                                break
+                            }
+
+                        }
+
+                        else -> {
+                            println("False Number from attack, try again!")
+                            println("-----------------------------------")
+                        }
+                    }
+                } catch (e: Exception) {
+                    println("You have to type number, not letter!!")
+
+                }
+            } else {
+                println("This hero is DEAD!!")
+                break
+            }
+            println("---------------------------------")
+
+
+        }
 
 
     }
-
-
 }

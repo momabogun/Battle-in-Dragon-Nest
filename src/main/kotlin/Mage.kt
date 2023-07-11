@@ -16,6 +16,7 @@ class Mage(
     fun frostBolt(target: Enemy) {
         if (mana < 100) {
             println("You have no Mana for this spell!!")
+            Thread.sleep(1000)
         } else {
             println("${this.name} casts Frost Bolt on $target")
             mage.manaUsage(100)
@@ -28,6 +29,7 @@ class Mage(
     fun rainOfFire(target: MutableList<Enemy>) {
         if (mana < 200) {
             println("You have no Mana for this spell")
+            Thread.sleep(1000)
         } else {
             mage.manaUsage(200)
             println("${this.name} casted Rain of Fire!!")
@@ -42,6 +44,7 @@ class Mage(
     fun plasmaBeam(target: Enemy) {
         if (mana < 500) {
             println("You have no Mana for this spell")
+            Thread.sleep(1000)
         } else {
             mage.manaUsage(500)
             println("Ultimate: ${this.name} casted Plasma Beam on $target ")
@@ -51,48 +54,72 @@ class Mage(
     }
 
     override fun spells(enemies: MutableList<Enemy>) {
-        println("---------------------------------")
-        println("Great choice, you chose ${this.name}")
-        while (true) {
-            println(mage)
+        if (!mage.heroDead()) {
             println("---------------------------------")
-            println("Choose your attack:")
-            println("\n[1] -> Attack with wand \n[2] -> Frostbolt(costs 100 mana) \n[3] -> Rain of Fire (costs 200 mana)\n[4] -> Plasma Beam (costs 500 mana)")
-            try {
-                var auswahl = readln().toInt()
-                when (auswahl) {
-                    1 -> {
-                        mage.attack(enemies.random())
-                        break
-                    }
-
-                    2 -> {
-                        mage.frostBolt(enemies.random())
-                        break
-                    }
-
-                    3 -> {
-                        mage.rainOfFire(enemies)
-                        break
-                    }
-
-                    4 -> {
-                        mage.plasmaBeam(enemies.random())
-                        break
-                    }
-
-                    else -> {
-                        println("False Number from attack, try again!")
-                        println("-----------------------------------")
-                    }
-                }
-            } catch (e: Exception) {
-                println("You have to type number, not letter!!")
-
-            }
+            println("Great choice, you chose ${this.name}")
         }
-        println("---------------------------------")
+        while (true) {
+            if (!mage.heroDead()) {
+                println(mage)
+                println("---------------------------------")
+                println("Choose your attack:")
+                println("\n[1] -> Attack with wand \n[2] -> Frostbolt(costs 100 mana) \n[3] -> Rain of Fire (costs 200 mana)\n[4] -> Plasma Beam (costs 500 mana)")
+                try {
+                    var auswahl = readln().toInt()
+                    when (auswahl) {
+                        1 -> {
+                            mage.attack(enemies.random())
+                            break
+                        }
+
+                        2 -> {
+                            if (mana < 100) {
+                                mage.frostBolt(enemies.random())
+                                continue
+                            } else {
+                                mage.frostBolt(enemies.random())
+                                break
+                            }
+
+                        }
+
+                        3 -> {
+                            if (mana < 200) {
+                                mage.rainOfFire(enemies)
+                                continue
+                            } else {
+                                mage.rainOfFire(enemies)
+                                break
+                            }
+
+                        }
+
+                        4 -> {
+                            if (mana < 500) {
+                                mage.plasmaBeam(enemies.random())
+                                continue
+                            } else {
+                                mage.plasmaBeam(enemies.random())
+                                break
+                            }
+                        }
+
+                        else -> {
+                            println("False Number from attack, try again!")
+                            println("-----------------------------------")
+                        }
+                    }
+                } catch (e: Exception) {
+                    println("You have to type number, not letter!!")
+
+                }
+            } else {
+                println("This hero is DEAD!!")
+                break
+            }
+            println("---------------------------------")
+        }
+
+
     }
-
-
 }

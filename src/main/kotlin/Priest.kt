@@ -14,7 +14,12 @@ class Priest(name: String,
     fun healTouch(target:Heroes){
         if (mana<200){
             println("You have no mana for this Spell!!")
-        } else{
+            Thread.sleep(1000)
+        } else if (target.health == target.maxHP){
+            println("${target.name} is full HP!!")
+            Thread.sleep(1000)
+        }
+        else {
             println("${this.name} casts healing touch on ${target.name}")
             priest.manaUsage(200)
             target.heal(200)
@@ -23,6 +28,7 @@ class Priest(name: String,
     fun lightingBolt(target: Enemy){
         if (mana < 100){
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else{
             println("${this.name} casts lighting bolt on $target")
             priest.manaUsage(100)
@@ -33,6 +39,7 @@ class Priest(name: String,
     fun massHeal(target: MutableList<Heroes>){
         if (mana < 500){
             println("You have no mana for this Spell!!")
+            Thread.sleep(1000)
         } else{
             println("ULTIMATE: ${this.name} casts Mass Heal on his allies")
             priest.manaUsage(500)
@@ -43,45 +50,71 @@ class Priest(name: String,
     }
 
     fun spells(enemies: MutableList<Enemy>, heroes: MutableList<Heroes>) {
-        println("---------------------------------")
-        println("Great choice, you chose ${this.name}")
-        while (true) {
-            println(priest)
+        if (!priest.heroDead()) {
             println("---------------------------------")
-            println("Choose your attack:")
-            println("[1] -> Attack with wand \n[2] -> Heal Touch (costs 200 mana)\n[3] -> Lighting Bolt (costs 100 mana)\n[4] -> Mass Heal (costs 500 mana)")
-            try {
-                val auswahl = readln().toInt()
-                when (auswahl) {
-                    1 -> {
-                        priest.attack(enemies.random())
-                        break
-                    }
-
-                    2 -> {
-                        priest.healTouch(heroes.random())
-                        break
-                    }
-
-                    3 -> {
-                        priest.lightingBolt(enemies.random())
-                        break
-                    }
-
-                    4 -> {
-                        priest.massHeal(heroes)
-                        break
-                    }
-
-                    else -> {
-                        println("False Number from attack, try again!")
-                        println("-----------------------------------")
-                    }
-                }
-            } catch (e: Exception) {
-                println("You have to type number, not letter!!")
-            }
+            println("Great choice, you chose ${this.name}")
         }
-        println("---------------------------------")
+        while (true) {
+            if (!priest.heroDead()){
+                println(priest)
+                println("---------------------------------")
+                println("Choose your attack:")
+                println("[1] -> Attack with wand \n[2] -> Heal Touch (costs 200 mana)\n[3] -> Lighting Bolt (costs 100 mana)\n[4] -> Mass Heal (costs 500 mana)")
+                try {
+                    val auswahl = readln().toInt()
+                    when (auswahl) {
+                        1 -> {
+                            priest.attack(enemies.random())
+                            break
+                        }
+
+                        2 -> {
+                            if (mana < 200 || heroes.random().health == heroes.random().maxHP) {
+                                priest.healTouch(heroes.random())
+                                continue
+                            } else {
+                                priest.healTouch(heroes.random())
+                                break
+                            }
+
+
+                        }
+
+                        3 -> {
+                            if (mana < 100) {
+                                priest.lightingBolt(enemies.random())
+                                continue
+                            } else {
+                                priest.lightingBolt(enemies.random())
+                                break
+                            }
+
+                        }
+
+                        4 -> {
+                            if (mana < 500) {
+                                priest.massHeal(heroes)
+                                continue
+                            } else {
+                                priest.massHeal(heroes)
+                                break
+                            }
+
+                        }
+
+                        else -> {
+                            println("False Number from attack, try again!")
+                            println("-----------------------------------")
+                        }
+                    }
+                } catch (e: Exception) {
+                    println("You have to type number, not letter!!")
+                }
+            } else{
+                println("This hero is DEAD!!")
+                break
+            }
+            println("---------------------------------")
+        }
     }
 }

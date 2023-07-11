@@ -22,10 +22,11 @@ class Battleground (var name: String){
         println("Welcome to the ${this.name}!! Our Heroes facing 5 Dragons....")
         println("---------------------------------")
         Thread.sleep(1000)
-        var i = 0
+        var i = 1
         while (heroes.isNotEmpty() || enemies.isNotEmpty()) {
             while (true) {
-                i++
+                println()
+                println("---------------------------------")
                 println("ROUND $i begins:")
                 println("---------------------------------")
                 println()
@@ -37,20 +38,44 @@ class Battleground (var name: String){
                     var auswahlHero = readln().toInt()
                     when (auswahlHero) {
                         1 -> {
-                            paladin.spells(enemies)
-                            break
+                            if (paladin.heroDead()){
+                                paladin.spells(enemies)
+                                Thread.sleep(1000)
+                                continue
+                            }else {
+                                paladin.spells(enemies)
+                                break
+                            }
                         }
                         2 -> {
-                            warrior.spells(enemies)
-                            break
+                            if (warrior.heroDead()){
+                                warrior.spells(enemies)
+                                Thread.sleep(1000)
+                                continue
+                            }else{
+                                warrior.spells(enemies)
+                                break
+                            }
                         }
                         3 -> {
-                            mage.spells(enemies)
-                            break
+                            if (mage.heroDead()){
+                                mage.spells(enemies)
+                                Thread.sleep(1000)
+                                continue
+                            }else{
+                                mage.spells(enemies)
+                                break
+                            }
                         }
                         4 -> {
-                            priest.spells(enemies, heroes)
-                            break
+                            if (priest.heroDead()){
+                                priest.spells(enemies,heroes)
+                                Thread.sleep(1000)
+                                continue
+                            }else {
+                                priest.spells(enemies, heroes)
+                                break
+                            }
                         }
                         else -> throw IllegalArgumentException("Invalid hero selection!")
                     }
@@ -74,6 +99,7 @@ class Battleground (var name: String){
                 Thread.sleep(2000)
                 val dragon = enemies.filterIsInstance<LittleDragon>()
                 dragon.random().fireBolt(heroes.random())
+                i++
                 Thread.sleep(3000)
                 println("---------------------------------")
                 println()
