@@ -61,7 +61,7 @@ open class Heroes(
         }
 
     }
-    fun attack (target: Enemy){
+    open fun attack (target: Enemy){
         mana += 100
         val attack = attackPower
         target.takeDamage(attack)

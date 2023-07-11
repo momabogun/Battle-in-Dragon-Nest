@@ -49,6 +49,13 @@ class Priest(name: String,
         }
     }
 
+    override fun attack(target: Enemy) {
+        mana += 200
+        health += 100
+        val attack = attackPower
+        target.takeDamage(attack)
+    }
+
     fun spells(enemies: MutableList<Enemy>, heroes: MutableList<Heroes>) {
         if (!priest.heroDead()) {
             println("---------------------------------")
@@ -59,7 +66,7 @@ class Priest(name: String,
                 println(priest)
                 println("---------------------------------")
                 println("Choose your attack:")
-                println("[1] -> Attack with wand \n[2] -> Heal Touch (costs 200 mana)\n[3] -> Lighting Bolt (costs 100 mana)\n[4] -> Mass Heal (costs 500 mana)")
+                println("[1] -> Attack with wand(heals for 100 when attack enemy) \n[2] -> Heal Touch (costs 200 mana)\n[3] -> Lighting Bolt (costs 100 mana)\n[4] -> Mass Heal (costs 500 mana)")
                 try {
                     val auswahl = readln().toInt()
                     when (auswahl) {

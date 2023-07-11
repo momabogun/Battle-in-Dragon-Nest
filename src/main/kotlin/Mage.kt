@@ -53,6 +53,12 @@ class Mage(
         }
     }
 
+    override fun attack(target: Enemy) {
+        mana += 200
+        val attack = attackPower
+        target.takeDamage(attack)
+    }
+
     override fun spells(enemies: MutableList<Enemy>) {
         if (!mage.heroDead()) {
             println("---------------------------------")
