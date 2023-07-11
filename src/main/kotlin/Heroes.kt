@@ -30,7 +30,7 @@ open class Heroes(
         }
     }
     fun expGain(){
-        exp += 300
+        exp += 150
         if (exp == 300){
             level += 1
             attackPower += 50

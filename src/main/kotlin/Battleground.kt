@@ -85,6 +85,13 @@ class Battleground (var name: String){
                     println(e.message)
                 }
             }
+            for (enemy in enemies){
+                if (enemy.enemyDead()){
+                    for(hero in heroes){
+                        hero.expGain()
+                    }
+                }
+            }
 
             val newListEnemy = mutableListOf<Enemy>()
             for (enemy in enemies) {
@@ -95,12 +102,13 @@ class Battleground (var name: String){
             enemies.clear()
             enemies.addAll(newListEnemy)
             if (enemies.isNotEmpty()) {
+                println("---------------------------------")
                 println("Enemies turn:")
                 Thread.sleep(2000)
                 val dragon = enemies.filterIsInstance<LittleDragon>()
                 dragon.random().fireBolt(heroes.random())
                 i++
-                Thread.sleep(3000)
+                Thread.sleep(2000)
                 println("---------------------------------")
                 println()
             } else {
@@ -190,6 +198,7 @@ class Battleground (var name: String){
             boss.clear()
             boss.addAll(newListEnemy)
             if (boss.isNotEmpty()) {
+                println("---------------------------------")
                 println("$bossDragon turn:")
                 Thread.sleep(2000)
                 if (bossDragon.health >= 1500) {
