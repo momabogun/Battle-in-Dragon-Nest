@@ -36,21 +36,27 @@ open class Heroes(
             attackPower += 50
             maxHP += 100
             maxMana +=20
+            health = maxHP
+            mana = maxMana
 
             println("Congratulation your ${this.name} has become lvl ${this.level}!")
         }
-        if (exp == 900){
+        if (exp == 450){
             level +=1
             attackPower += 85
             maxHP += 300
             maxMana +=50
+            health = maxHP
+            mana = maxMana
             println("Congratulation your ${this.name} has become lvl ${this.level}!")
         }
-        if (exp == 1800){
+        if (exp == 750){
             level +=1
             attackPower += 100
             maxHP += 500
             maxMana +=50
+            health = maxHP
+            mana = maxMana
             println("Congratulation your ${this.name} has become lvl ${this.level}!")
         }
 

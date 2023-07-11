@@ -95,7 +95,7 @@ class Warrior(
                         }
 
                         4 -> {
-                            if (mana < 500) {
+                            if (mana < 300) {
                                 warrior.execute(enemies.random())
                                 continue
                             } else {
