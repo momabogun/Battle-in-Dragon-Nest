@@ -244,6 +244,46 @@ class Battleground (var name: String){
         }
 
     }
+    fun menu(){
+        println("-------------------------")
+        println("Welcome in the Golden Syntax RPG game")
+        while (true) {
+            println("-------------------------")
+            println()
+            println("[1] Tutorial\n[2] Start Game\n[3] Dragon fight\n[4] Log Out")
+            try {
+                var auswahl = readln().toInt()
+                when (auswahl) {
+                    1 -> {
+                        println("Rundenbasierte Kämpfe bedeuten, dass du und der Feind abwechselnd Aktionen ausführen.\nSie haben 4 Helden: Warrior, Paladin, Mage und \nPriest, die alle verschiedene spells haben\nSie kämpfen zuerst mit Drahe(Firezilla) minions und wenn \nsie gewinne gegen die minions dann kommt die Drahe.")
+                        Thread.sleep(2000)
+                        continue
+                    }
+
+                    2 -> {
+                        entranceBattle()
+                        break
+                    }
+
+                    3 -> {
+                        bossBattle()
+                        break
+                    }
+
+                    4 -> {
+                        break
+                    }
+
+                    else -> throw IllegalArgumentException("Invalid hero selection!")
+                }
+            } catch (e: NumberFormatException) {
+                println("Please enter a valid number!")
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
+
+    }
 
 }
 

@@ -11,9 +11,7 @@ var bossDragon :Dragon = Dragon("FIREZILLA",3500,600)
 var battleground:Battleground= Battleground("DRAGON PIT")
 
 fun main(){
-    battleground.entranceBattle()
-    println()
-    battleground.bossBattle()
+    battleground.menu()
 
 
 
