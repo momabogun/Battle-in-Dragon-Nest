@@ -262,6 +262,7 @@ class Battleground (var name: String){
 
                     2 -> {
                         entranceBattle()
+                        bossBattle()
                         break
                     }
 
