@@ -162,23 +162,47 @@ class Battleground (var name: String){
                     var auswahlHero = readln().toInt()
                     when (auswahlHero) {
                         1 -> {
-                            paladin.spells(boss)
-                            break
+                            if (paladin.heroDead()){
+                                paladin.spells(boss)
+                                Thread.sleep(1000)
+                                continue
+                            }else {
+                                paladin.spells(boss)
+                                break
+                            }
                         }
 
                         2 -> {
-                            warrior.spells(boss)
-                            break
+                            if (warrior.heroDead()){
+                                warrior.spells(boss)
+                                Thread.sleep(1000)
+                                continue
+                            }else{
+                                warrior.spells(boss)
+                                break
+                            }
                         }
 
                         3 -> {
-                            mage.spells(boss)
-                            break
+                            if (mage.heroDead()){
+                                mage.spells(boss)
+                                Thread.sleep(1000)
+                                continue
+                            }else{
+                                mage.spells(boss)
+                                break
+                            }
                         }
 
                         4 -> {
-                            priest.spells(boss, heroes)
-                            break
+                            if (priest.heroDead()){
+                                priest.spells(boss,heroes)
+                                Thread.sleep(1000)
+                                continue
+                            }else {
+                                priest.spells(boss, heroes)
+                                break
+                            }
                         }
 
                         else -> throw IllegalArgumentException("Invalid hero selection!")
@@ -250,7 +274,7 @@ class Battleground (var name: String){
         while (true) {
             println("-------------------------")
             println()
-            println("[1] Tutorial\n[2] Start Game\n[3] Dragon fight\n[4] Log Out")
+            println("[1] Tutorial\n[2] New Game\n[3] Log Out")
             try {
                 var auswahl = readln().toInt()
                 when (auswahl) {
@@ -267,13 +291,9 @@ class Battleground (var name: String){
                     }
 
                     3 -> {
-                        bossBattle()
                         break
                     }
 
-                    4 -> {
-                        break
-                    }
 
                     else -> throw IllegalArgumentException("Invalid hero selection!")
                 }
