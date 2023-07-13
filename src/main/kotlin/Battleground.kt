@@ -270,7 +270,7 @@ class Battleground (var name: String){
     }
     fun menu(){
         println("-------------------------")
-        println("Welcome in the Golden Syntax RPG game")
+        println("Welcome in the 'Battle in Dragon' Nest RPG game")
         while (true) {
             println("-------------------------")
             println()
@@ -279,7 +279,7 @@ class Battleground (var name: String){
                 var auswahl = readln().toInt()
                 when (auswahl) {
                     1 -> {
-                        println("Rundenbasierte Kämpfe bedeuten, dass du und der Feind abwechselnd Aktionen ausführen.\nSie haben 4 Helden: Warrior, Paladin, Mage und \nPriest, die alle verschiedene spells haben\nSie kämpfen zuerst mit Drahe(Firezilla) minions und wenn \nsie gewinne gegen die minions dann kommt die Drahe.")
+                        println("Rundenbasierte Kämpfe, du und der Feind abwechselnd Aktionen ausführen.\nSie haben 4 Helden: Warrior, Paladin, Mage und \nPriest, die alle verschiedene spells haben\nSie kämpfen zuerst mit Drahe(Firezilla) minions und wenn \nsie gewinne gegen die minions dann kommt die Drahe.")
                         Thread.sleep(2000)
                         continue
                     }
