@@ -1,7 +1,5 @@
 # Battle in Dragon Nest
-![5444997d471ba93836ae62a0d5392cc8.jpg](..%2F..%2F..%2FDesktop%2F5444997d471ba93836ae62a0d5392cc8.jpg)<br>
-
-
+![1a3d7a18584f7db56d3ef79a302e8405.jpg](src%2Fmain%2F1a3d7a18584f7db56d3ef79a302e8405.jpg)<br>
 Willkommen zu rundenbasierten RPG-Spiel! In diesem aufregenden Abenteuer kämpfen tapfere Helden gegen gefährliche Feinde in einer epischen Fantasy-Welt. Die Spieler übernehmen die Kontrolle über verschiedene Heldenklassen, darunter der Warrior, Paladin, Mage und Priest. Die erste Etappe besteht aus einem Entrance Battle, gefolgt von einem Boss Battle gegen den mächtigen Feind "Firezilla". Tauche ein in dieses spannende Abenteuer und zeige deine taktische Fähigkeit!
 ### Spielziel
 Das Ziel des Spiels ist es, alle Gegner zu besiegen und das Königreich vor der Bedrohung zu retten. Du musst strategische Entscheidungen treffen, deine Helden verbessern und mächtige Fähigkeiten einsetzen, um die Herausforderungen zu meistern.
