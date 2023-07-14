@@ -8,11 +8,10 @@ open class Heroes(
     open var abilityPower: Int
 ){
 
-    val maxHealth:Int = maxHP
     private val maxM:Int = maxMana
-    var health = maxHealth
+    var health = maxHP
         set(value) {
-            field = value.coerceIn(0, maxHealth)
+            field = value.coerceIn(0, maxHP)
         }
     open var mana = maxM
         set(value) {

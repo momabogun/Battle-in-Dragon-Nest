@@ -44,7 +44,7 @@ class Priest(name: String,
             println("ULTIMATE: ${this.name} casts Mass Heal on his allies")
             priest.manaUsage(500)
             for (hero in target){
-                hero.heal(abilityPower/2)
+                hero.heal(abilityPower)
             }
         }
     }

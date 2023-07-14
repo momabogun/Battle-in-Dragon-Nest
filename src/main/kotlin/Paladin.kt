@@ -31,13 +31,13 @@ class Paladin(
         if (mana < abilityPower) {
             println("You have no mana for this Spell!!")
             Thread.sleep(1000)
-        } else if (this.health == this.maxHealth) {
+        } else if (this.health == this.maxHP) {
             println("You have already full HP!!")
 
         } else {
             paladin.manaUsage(abilityPower)
             paladin.heal(abilityPower)
-            println("${this.name} has ${this.health}/${this.maxHealth}")
+            println("${this.name} has ${this.health}/${this.maxHP}")
         }
     }
 
@@ -85,7 +85,7 @@ class Paladin(
                         }
 
                         3 -> {
-                            if (mana < abilityPower || this.health == this.maxHealth) {
+                            if (mana < abilityPower || this.health == this.maxHP) {
                                 paladin.healOfRighteous()
                                 continue
                             } else {
