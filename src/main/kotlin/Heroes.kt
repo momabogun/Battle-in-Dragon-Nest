@@ -44,7 +44,7 @@ open class Heroes(
         if (exp == 450){
             level +=1
             attackPower += 85
-            maxHP += 300
+            maxHP += 150
             maxMana +=50
             health = maxHP
             mana = maxMana
@@ -53,7 +53,7 @@ open class Heroes(
         if (exp == 750){
             level +=1
             attackPower += 100
-            maxHP += 500
+            maxHP += 200
             maxMana +=50
             health = maxHP
             mana = maxMana
