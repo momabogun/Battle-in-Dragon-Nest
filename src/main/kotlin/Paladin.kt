@@ -50,8 +50,6 @@ class Paladin(
             println("ULTIMATE. ${this.name} has now new form Wings of Justice")
             this.abilityPower *= 4
             this.attackPower *= 2
-            this.maxHP += 300
-            this.maxMana += 200
 
         }
 

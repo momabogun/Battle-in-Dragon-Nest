@@ -30,34 +30,33 @@ open class Heroes(
         }
     }
     fun expGain(){
-        exp += 150
-        if (exp == 300){
-            level += 1
-            attackPower += 50
-            maxHP += 100
-            maxMana +=20
-            health = maxHP
-            mana = maxMana
+        if (!heroDead()) {
+            exp += 150
+            if (exp == 300) {
+                level += 1
+                attackPower += 50
+                maxHP += 100
+                health = maxHP
+                mana = maxMana
 
-            println("Congratulation your ${this.name} has become lvl ${this.level}!")
-        }
-        if (exp == 450){
-            level +=1
-            attackPower += 85
-            maxHP += 150
-            maxMana +=50
-            health = maxHP
-            mana = maxMana
-            println("Congratulation your ${this.name} has become lvl ${this.level}!")
-        }
-        if (exp == 750){
-            level +=1
-            attackPower += 100
-            maxHP += 200
-            maxMana +=50
-            health = maxHP
-            mana = maxMana
-            println("Congratulation your ${this.name} has become lvl ${this.level}!")
+                println("Congratulation your ${this.name} has become lvl ${this.level}!")
+            }
+            if (exp == 450) {
+                level += 1
+                attackPower += 85
+                maxHP += 150
+                health = maxHP
+                mana = maxMana
+                println("Congratulation your ${this.name} has become lvl ${this.level}!")
+            }
+            if (exp == 750) {
+                level += 1
+                attackPower += 100
+                maxHP += 200
+                health = maxHP
+                mana = maxMana
+                println("Congratulation your ${this.name} has become lvl ${this.level}!")
+            }
         }
 
     }
