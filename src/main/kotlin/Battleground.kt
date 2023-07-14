@@ -112,7 +112,9 @@ class Battleground (var name: String){
                 println("---------------------------------")
                 println()
             } else {
+                println("++++++++++++++++++++++++++++++++++")
                 println("You won the entrance battle. Congratulations!!")
+                println("++++++++++++++++++++++++++++++++++")
                 Thread.sleep(2000)
                 println(".........")
                 println("But new foe is closing near")
@@ -249,7 +251,9 @@ class Battleground (var name: String){
                 }
 
             } else {
+                println("++++++++++++++++++++++++++++++++++")
                 println("You won the battle against mighty $bossDragon!! Congratulations, the realm is now in safe place!!")
+                println("++++++++++++++++++++++++++++++++++")
                 break
             }
             val newListHeroes = mutableListOf<Heroes>()
